@@ -1,4 +1,5 @@
 import { Component } from 'react';
+import s from './ContactForm.module.css';
 
 class ContactForm extends Component {
   render() {
@@ -6,14 +7,15 @@ class ContactForm extends Component {
 
     return (
       <div>
-        <h2>Phonebook</h2>
-        <form onSubmit={this.props.onSubmit}>
+        <h2 className={s.title}>Phonebook</h2>
+        <form className={s.contactForm} onSubmit={this.props.onSubmit}>
           <label htmlFor="new-name">Name</label>
           <input
             type="text"
             name="name"
             id="new-name"
             placeholder="Enter name"
+            className={s.inputName}
             onChange={this.props.onChangeName}
             value={name}
           />
@@ -23,15 +25,20 @@ class ContactForm extends Component {
             name="phone"
             id="new-phone"
             placeholder="Enter phone number"
+            className={s.inputPhone}
             onChange={this.props.onChangeNum}
             value={number}
             pattern="[0-9]{3}-[0-9]{2}-[0-9]{2}"
             required
           />
-          <span>Format phone number 000-00-00</span>
-          <button type="submit">Add contact</button>
+          <span className={s.inputPhonePrompt}>
+            Format phone number 000-00-00
+          </span>
+          <button className={s.btnAdd} type="submit">
+            Add contact
+          </button>
         </form>
-        <h2>Contacts</h2>
+        <h2 className={s.title}>Contacts</h2>
       </div>
     );
   }
